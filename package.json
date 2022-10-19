@@ -1,0 +1,41 @@
+{
+  "name": "prisma-paljs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "description": "prisma-paljs",
+  "scripts": {
+    "start": "node dist/server",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "pal g && npm -s run generate:prisma && npm -s run generate:nexus",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only src/nexusSchema",
+    "db-dev": "prisma migrate dev",
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server"
+  },
+  "dependencies": {
+    "nexus": "1.3.0",
+    "@prisma/client": "3.16.0-integration-tmp-revert-node14.1",
+    "@paljs/nexus": "4.1.0",
+    "apollo-server": "2.26.0",
+    "graphql": "15.8.0"
+  },
+  "devDependencies": {
+    "prisma": "3.16.0-integration-tmp-revert-node14.1",
+    "@types/node": "15.14.9",
+    "@paljs/cli": "4.1.0",
+    "prettier": "2.7.1",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "1.1.8",
+    "typescript": "4.8.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
+  "repository": "https://github.com/simonjoom/prisma-paljs",
+  "author": "simon"
+}
